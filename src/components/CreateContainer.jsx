@@ -87,8 +87,9 @@ const CreateContainer = () => {
           title: title,
           imageURL: imageAsset,
           category: category,
+          calories: calories,
           qty: 1,
-          price: price
+          price: price,
         }
         saveItem(data);
         setIsLoading(false);
@@ -180,7 +181,7 @@ const CreateContainer = () => {
                 (
                   <>
                     <div className="relative h-full">
-                      <img src={imageAsset} alt="Uploaded Image" className="w-full h-full object-cover" />
+                      <img src={imageAsset} alt="Uploaded an Img" className="w-full h-full object-cover" />
                       <button type="button" className="absolute bottom-3 right-3 p-3 rounded-full bg-orange-500 text-xl cursor-pointer outline-none hover:shadow-md duration-500 transition-all ease-in-out"
                         onClick={deleteImage}>
                         <MdDelete className="text-white" />
@@ -203,7 +204,7 @@ const CreateContainer = () => {
         <div className="w-full items-center flex flex-col md:flex-row gap-3">
           <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
             <FaRupeeSign className="text-gray-700 text-lg" />
-            <input type="text" required value={price} onChange={(e) => setCalories(e.target.value)} placeholder="Price" className="w-full h-full text-textColor text-lg bg-transparent border-none outline-none placeholder:text-gray-400" />
+            <input type="text" required value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" className="w-full h-full text-textColor text-lg bg-transparent border-none outline-none placeholder:text-gray-400" />
           </div>
         </div>
 

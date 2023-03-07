@@ -44,8 +44,8 @@ const HomeContainer = () => {
                         <p className="text-[12px] lg:text-sm px-2 my-1 lg:my-2 font-semibold text-lightTextGray">
                             {n.desc}
                         </p>
-                        <p class="text-base font-semibold text-headingColor">
-                            <span class="text-base text-red-600">₹</span>
+                        <p className="text-base font-semibold text-headingColor">
+                            <span className="text-base text-red-600">₹</span>
                             {n.price} 
                         </p>
                     </div>

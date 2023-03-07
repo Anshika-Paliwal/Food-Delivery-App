@@ -1,9 +1,25 @@
-import React from 'react'
+import { React, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { CreateContainer, Header, MainContainer } from './components'
+import { useStateValue } from './context/StateProvider'
+import { getAllFoodItems } from './utils/firebaseFunctions'
 
 const App = () => {
+  const [{}, dispatch] = useStateValue();
+  const fetchData = async () => {
+    await getAllFoodItems().then(data => {
+      dispatch({
+        // type: actionType.SET_FOOD_ITEMS,
+        // fooItems: ,
+      })
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
     <AnimatePresence mode='wait'>
