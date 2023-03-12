@@ -14,3 +14,4 @@ export const getAllFoodItems = async () => {
     );
     return items.docs.map((doc) => doc.data());
 }
+

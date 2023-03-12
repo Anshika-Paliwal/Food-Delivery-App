@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useStateValue } from 'react'
 import { motion } from "framer-motion"
 import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank } from "react-icons/md"
 import { FaRupeeSign } from "react-icons/fa"
@@ -8,9 +8,11 @@ import { ref, deleteObject, uploadBytesResumable, getDownloadURL } from "firebas
 import { storage } from "../firebase.config"
 import { saveItem } from '../utils/firebaseFunctions.js'
 import Loader from '../components/Loader'
+import { actionType } from '../context/reducer'
+import { getAllFoodItems } from '../utils/firebaseFunctions'
 
 const CreateContainer = () => {
-
+  const [, dispatch] = useStateValue();
   const [title, setTitle] = useState("");
   const [calories, setCalories] = useState("");
   const [price, setPrice] = useState("");
@@ -121,6 +123,15 @@ const CreateContainer = () => {
     setPrice("");
     setCategory("Select a Category");
   }
+
+  const fetchData = async () => {
+    await getAllFoodItems().then(data => {
+      dispatch({
+        type: actionType.SET_FOOD_ITEMS,
+        fooItems: data,
+      })
+    });
+  };
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center">
