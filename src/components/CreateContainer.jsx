@@ -12,7 +12,7 @@ import { actionType } from '../context/reducer'
 import { getAllFoodItems } from '../utils/firebaseFunctions'
 
 const CreateContainer = () => {
-  const [, dispatch] = useStateValue();
+  const [{foodItems}, dispatch] = useStateValue();
   const [title, setTitle] = useState("");
   const [calories, setCalories] = useState("");
   const [price, setPrice] = useState("");
@@ -75,7 +75,7 @@ const CreateContainer = () => {
     setIsLoading(true);
     try {
       if ((!imageAsset || !title || !calories || !price || !category)) {
-        setFields(true)
+        setFields(true);
         setMsg("Required fields must be filled. 🙇");
         setAlertStatus("danger");
         setTimeout(() => {
@@ -114,6 +114,7 @@ const CreateContainer = () => {
         setIsLoading(false);
       }, 5000);
     }
+    fetchData();
   }
 
   const clearData = () => {
